@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @review.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @review.longitude %>
+</p>
+
+<p>
+  <b>Review:</b>
+  <%= @review.review %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @review.data %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @review.project %>
+</p>
+
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

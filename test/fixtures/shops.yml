@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  datetime_of_visit: MyString
+  latitude: MyString
+  longitude: MyString
+  contact: MyString
+  project: 
+
+two:
+  name: MyString
+  datetime_of_visit: MyString
+  latitude: MyString
+  longitude: MyString
+  contact: MyString
+  project: 

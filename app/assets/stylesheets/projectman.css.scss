@@ -1,0 +1,113 @@
+// Place all the styles related to the Properties controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* mixins, variables, etc. */
+$grayMediumLight: #eaeaea;
+$grayDarker: #222;
+$grayLight: #888888;
+
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.custom_btn {
+  padding:5px;
+  background-color: #dcdcdc;
+  border: 1px solid #666;
+  color:#9400D3;
+  text-decoration:none;
+}
+
+
+/* header */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+
+/* footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: #999;
+  a {
+    color: #555;
+    &:hover {
+      color: $grayDarker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+.center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Stupid hacks
+.cont-fix {
+  margin: 0 auto;
+  //margin-left: 6%;
+}
+
+//More stupid hack
+#cont-back{
+  margin: 0 auto;
+  //background-color: black;
+  background:rgb(255,255,255);
+  background:rgba(255,255,255, 0.85);
+}
+
+.white-background{
+  //margin: 0 auto;
+  //background-color: black;
+  background:rgb(255,255,255);
+  
+  background:rgba(255,255,255, 1);
+}
+
+/* miscellaneous */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+#copyright {
+  background: #3f3f3f;
+  color: #fff;
+  padding: 11px 0;
+  margin-top: 30px;
+  bottom: 0px;
+}
+
