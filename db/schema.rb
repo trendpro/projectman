@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130802180637) do
+ActiveRecord::Schema.define(:version => 20130803104136) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -38,21 +38,21 @@ ActiveRecord::Schema.define(:version => 20130802180637) do
     t.text     "review"
     t.hstore   "data"
     t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "datetime_of_visit"
   end
 
   add_index "reviews", ["project_id"], :name => "index_reviews_on_project_id"
 
   create_table "shops", :force => true do |t|
     t.string   "name"
-    t.string   "datetime_of_visit"
     t.string   "latitude"
     t.string   "longitude"
     t.string   "contact"
     t.integer  "project_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "shops", ["project_id"], :name => "index_shops_on_project_id"

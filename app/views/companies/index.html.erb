@@ -1,27 +1,28 @@
-<h1>Listing companies</h1>
+<div class="span2">
+	<p></p>
+</div>
+<div class="span8">
+	<h1 class="pageheader">Companies</h1>
+	<ol class="microposts">
+		<% @companies.each do |company| %>
+		  <li>
+		    <p><%= company.name %></p>
+		    <p><%= company.description %></p>
+		    <p><%= company.homepage %></p>
+		    <p><%= link_to 'Show', company %>
+		    <%= link_to 'Edit', edit_company_path(company) %>
+		    <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+		    	<span class="timestamp">
+					Created <%= time_ago_in_words(company.created_at) %> ago.
+				</span>
+		  </li>
+		<% end %>
+	</ol>
+	
+	<br />
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Homepage</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @companies.each do |company| %>
-  <tr>
-    <td><%= company.name %></td>
-    <td><%= company.description %></td>
-    <td><%= company.homepage %></td>
-    <td><%= link_to 'Show', company %></td>
-    <td><%= link_to 'Edit', edit_company_path(company) %></td>
-    <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Company', new_company_path %>
+	<%= link_to 'New Company', new_company_path %>
+</div>
+<div class="span2">
+	<p>sidebar</p>
+</div>

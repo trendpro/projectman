@@ -1,6 +1,16 @@
-<h1>Editing review</h1>
+<div class="span2">
+	<p></p>
+</div>
+<div class="span8">
+	<h1>Editing review</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @review %> |
-<%= link_to 'Back', reviews_path %>
+	<%= form_for  @review, :html => { :class => :form } do |f| -%>
+	  <%= render :partial => "form", :locals => {:f => f} %>
+	<% end -%>
+	
+	<%= link_to 'Show', @review %> |
+	<%= link_to 'Back', reviews_path %>
+</div>
+<div class="span2">
+	<p></p>
+</div>

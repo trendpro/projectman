@@ -1,4 +1,3 @@
-<%= form_for(@review) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -11,27 +10,92 @@
     </div>
   <% end %>
 
-  <div class="field">
+<div class="field">
     <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
+    <%= f.text_field :latitude, :placeholder => "Latitudde of agent" %>
   </div>
+
+<div class="field">
+   <%= f.label :longitude %>
   <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
+    <%= f.text_field :longitude, :class => 'text_field', :placeholder => "Longitude of agent" %>
   </div>
+</div>
+<div class="field">
+   <%= f.label :review %>
   <div class="field">
-    <%= f.label :review %><br />
-    <%= f.text_area :review %>
+    <%= f.text_area :review, :class => 'text_field', :placeholder => "Review" %>
   </div>
+</div>
+<div class="field">
+   <%= f.label :datetime_of_visit %>
   <div class="field">
-    <%= f.label :data %><br />
-    <%= f.text_field :data %>
+    <%= f.text_field :datetime_of_visit, :class => 'text_field', :placeholder => "Datetimeof visit" %>
   </div>
-  <div class="field">
-    <%= f.label :project %><br />
-    <%= f.text_field :project %>
+</div>
+
+
+<div class='clearfix attributeContainer'>
+  <label class="label" for="review_data">Data Attributes</label>
+  <div class='row'>
+    <p class='span3 underline'>Name</p>
+    <p class='span3 underline'>Value</p>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <%= f.fields_for :data, @review.data do |d| %>
+    <% @review.data.try(:each) do |key, value| %>
+        <div class="row">
+          <p class='span3'>
+            <%= text_field_tag key, key, :class => 'text_field dynamicAttributeName' %>
+          </p>
+          <p class='span3'>
+            <%= d.text_field key, :class => 'text_field', :value => value %>
+          </p>
+          <p class='span1'>
+            <a herf='#' class='btn removeRow'>X</a>
+          </p>
+        </div>
+    <% end %>
+  <%- end -%>
+
+  <div class='row attributeTemplate <%= 'hide' if @review.data.present? %>'>
+    <p class='span3'>
+      <input class='text_field dynamicAttributeName' id='' name='' placeholder='New Attribute name' size='30' type='text' />
+    </p>
+    <p class='span3'><input class='text_field' id='bar' name='' placeholder='value' size='30' type='text' /></p>
+    <p class='span1'><a herf='#' class='btn removeRow'>X</a></p>
   </div>
-<% end %>
+  <%= link_to 'Add Attribute', '#', :class => 'btn addAttribute btn-primary' %>
+</div>
+
+
+
+<div class="form-actions">
+  <%= f.submit 'Save', :class => 'btn primary' %> or
+<%= link_to "Cancel", request.referrer || reviews_path %>
+</div>
+
+
+
+<%= content_for :js do %>
+  <script type='text/javascript'>
+   $('.attributeContainer').delegate('.dynamicAttributeName', 'keyup', function(event){
+     nameElem = $(this);
+     valueElem = nameElem.closest('.row').children('p').children('.text_field')
+     value = nameElem.val().toLowerCase();
+     valueElem.attr('id', 'review_data_' + value );
+     valueElem.attr('name', 'review[data][' + value + ']');
+     valueElem.attr('placeholder', 'value for ' + value );
+   })
+
+   $('.attributeContainer').delegate('.removeRow', 'click', function(){
+     console.log($(this).closest('.row'))
+     $(this).closest('.row').html('');
+   })
+
+   $('.addAttribute').on('click', function(){
+     contents = "<div class='row'>" + $('.attributeTemplate').html() + '</div>';
+     $(this).before(contents);
+   })
+  </script>
+<%- end -%>

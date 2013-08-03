@@ -41,6 +41,7 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = Shop.new(params[:shop])
+    @shop.project_id = session[:current_project].to_i
 
     respond_to do |format|
       if @shop.save

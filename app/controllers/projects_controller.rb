@@ -14,11 +14,14 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    #@reviews = @project.reviews
+    @reviews = Review.where(:project_id => params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
     end
+    
   end
 
   # GET /projects/new
@@ -41,6 +44,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+    @project.company_id = session[:current_company].to_i
 
     respond_to do |format|
       if @project.save

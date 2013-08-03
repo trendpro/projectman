@@ -41,6 +41,8 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(params[:review])
+    #@review = Review.create(params[:review])
+    @review.project_id = session[:current_project].to_i
 
     respond_to do |format|
       if @review.save

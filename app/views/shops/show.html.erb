@@ -1,35 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="span2">
+	<p></p>
+</div>
+<div class="span8">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @shop.name %>
-</p>
+	<p>
+	  <b>Name:</b>
+	  <%= @shop.name %>
+	</p>
+	
+	<p>
+	  <b>Latitude:</b>
+	  <%= @shop.latitude %>
+	</p>
+	
+	<p>
+	  <b>Longitude:</b>
+	  <%= @shop.longitude %>
+	</p>
+	
+	<p>
+	  <b>Contact:</b>
+	  <%= @shop.contact %>
+	</p>
+	
+	<p>
+	  <b>Project:</b>
+	  <%= @shop.project %>
+	</p>
+	
+	
+	<%= link_to 'Edit', edit_shop_path(@shop) %> |
+	<%= link_to 'Back', shops_path %>
 
-<p>
-  <b>Datetime of visit:</b>
-  <%= @shop.datetime_of_visit %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%= @shop.latitude %>
-</p>
-
-<p>
-  <b>Longitude:</b>
-  <%= @shop.longitude %>
-</p>
-
-<p>
-  <b>Contact:</b>
-  <%= @shop.contact %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @shop.project %>
-</p>
-
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
+</div>
+<div class="span2">
+	<p></p>
+</div>

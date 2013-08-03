@@ -1,20 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="span2">
+	<% session[:current_company] = @company.id %>
+    <%= link_to 'Create New Project.', new_project_path %>
+</div>
+<div class="span8">
+	<p id="notice"><%= notice %></p>
+	
+	<p>
+	  <b>Name:</b>
+	  <%= @company.name %>
+	</p>
+	
+	<p>
+	  <b>Description:</b>
+	  <%= @company.description %>
+	</p>
+	
+	<p>
+	  <b>Homepage:</b>
+	  <%= @company.homepage %>
+	</p>
+	
+	
+	<%= link_to 'Edit', edit_company_path(@company) %> |
+	<%= link_to 'Back', companies_path %>
+</div>
+<div class="span2">
+	<p></p>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @company.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @company.description %>
-</p>
-
-<p>
-  <b>Homepage:</b>
-  <%= @company.homepage %>
-</p>
-
-
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>

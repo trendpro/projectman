@@ -1,30 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class="span2">
+	<p></p>
+</div>
+<div class="span8">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Latitude:</b>
-  <%= @review.latitude %>
-</p>
+	<p>
+	  <b>Latitude:</b>
+	  <%= @review.latitude %>
+	</p>
+	
+	<p>
+	  <b>Longitude:</b>
+	  <%= @review.longitude %>
+	</p>
+	
+	<p>
+	  <b>Datetime of visit:</b>
+	  <%= @review.datetime_of_visit %>
+	</p>
+	
+	<p>
+	  <b>Review:</b>
+	  <%= @review.review %>
+	</p>
+	
+	<p>
+		<div class='clearfix attributeContainer'>
+		  <label class="label" for="review_data">Data Attributes</label>
+		  <div class='row'>
+		    <p class='span3 underline'>Name</p>
+		    <p class='span3 underline'>Value</p>
+		  </div>
+		  <% @review.data.try(:each) do |key, value| %>
+		    <div class='row'>
+		      <p class='span3'>
+		        <%= key %>
+		      </p>
+		      <p class='span3'><%= value %></p>
+		    </div>
+		  <%- end -%>
+		</div>
+	</p>
+	
+	<p>
+	  <b>Project:</b>
+	  <%= @review.project.name %>
+	</p>
+	
+	
+	<%= link_to 'Edit', edit_review_path(@review) %> |
+	<%= link_to 'Back', reviews_path %>
 
-<p>
-  <b>Longitude:</b>
-  <%= @review.longitude %>
-</p>
-
-<p>
-  <b>Review:</b>
-  <%= @review.review %>
-</p>
-
-<p>
-  <b>Data:</b>
-  <%= @review.data %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @review.project %>
-</p>
-
-
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+</div>
+<div class="span2">
+	<p></p>
+</div>

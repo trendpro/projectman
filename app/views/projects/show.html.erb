@@ -1,25 +1,73 @@
-<p id="notice"><%= notice %></p>
+<div class="span2">
+	<div>
+		<% session[:current_project] = @project.id %>
+    	<%= link_to 'Create New Shop/Territory.', new_shop_path %>
+	</div>
+	<div>
+		<% session[:current_project] = @project.id %>
+    	<%= link_to 'Create New Review.', new_review_path %>
+	</div>
+</div>
+<div class="span8">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
+	<p>
+	  <b>Name:</b>
+	  <%= @project.name %>
+	</p>
+	
+	<p>
+	  <b>Description:</b>
+	  <%= @project.description %>
+	</p>
+	
+	<p>
+	  <b>Homepage:</b>
+	  <%= @project.homepage %>
+	</p>
+	
+	<p>
+	  <b>Company:</b>
+	  <%= link_to @project.company.name, @project.company  %>
+	</p>
+	
+	
+	<%= link_to 'Edit', edit_project_path(@project) %> |
+	<%= link_to 'Back', projects_path %>
+	
+	<div class="row">
+		<h1 class="pageheader">This Project's Reviews</h1>
 
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
+		<table>
+		  <tr>
+		    <th>Latitude</th>
+		    <th>Longitude</th>
+		    <th>Review</th>
+		    <th>Data</th>
+		    <th>Project</th>
+		    <th>Datetime of Visit</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+		
+		<% @reviews.each do |review| %>
+		  <tr>
+		    <td><%= review.latitude %></td>
+		    <td><%= review.longitude %></td>
+		    <td><%= review.review %></td>
+		    <td><%= review.data %></td>
+		    <td><%= review.project.name %></td>
+		    <td><%= review.datetime_of_visit %></td>
+		    <td><%= link_to 'Show', review %></td>
+		    <td><%= link_to 'Edit', edit_review_path(review) %></td>
+		    <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+		</table>
 
-<p>
-  <b>Homepage:</b>
-  <%= @project.homepage %>
-</p>
-
-<p>
-  <b>Company:</b>
-  <%= @project.company %>
-</p>
-
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+	</div>
+</div>
+<div class="span2">
+	<p></p>
+</div>

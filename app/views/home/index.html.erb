@@ -1,3 +1,23 @@
-<h1>
-	Welcome to project Manager Home.
-</h1>
+<div class="span8">
+	<h1>
+		Welcome to project Manager Home.
+	</h1>
+</div>
+<div class="span4">
+	<h3 class="pageheader">Our Projects</h3>
+	<ol class="microposts">
+		<%  @projects.each do |project| %>
+		  <li>
+		    <p><%= project.name %></p>
+		    <p><%= project.description %></p>
+		    <p><%= project.homepage %></p>
+		    <p><%= link_to 'Show', project %>
+		    <%= link_to 'Edit', edit_project_path(project) %>
+		    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+		    	<span class="timestamp">
+					Created <%= time_ago_in_words(project.created_at) %> ago.
+				</span>
+		  </li>
+		<% end %>
+	</ol>
+</div>

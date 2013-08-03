@@ -1,33 +1,34 @@
-<h1>Listing shops</h1>
+<div class="span2">
+	<p></p>
+</div>
+<div class="span8">
+	<h1 class="pageheader">Shops/Territories.</h1>
+	<ol class="microposts">
+		<% @shops.each do |shop| %>
+		  <li>
+		    <p>Name: <%= shop.name %></p>
+		    <p>Lat: <%= shop.latitude %></p>
+		    <p>Long:<%= shop.longitude %> </p>
+		    <p>Contact: <%= shop.contact %></p>
+		    <p>Project: <%= shop.project %></p>
+		    <p>
+		    	<%= link_to 'Show', shop %>
+		    	<%= link_to 'Edit', edit_shop_path(shop) %>
+		    	<%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %>
+		    </p>
+		    		    
+	    	<span class="timestamp">
+				Created <%= time_ago_in_words(shop.created_at) %> ago.
+			</span>
+		  </li>
+		<% end %>
+	</ol>
+	
+	<br />
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Datetime of visit</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Contact</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<%= link_to 'New Shop', new_shop_path %>
+</div>
+<div class="span2">
+	<p>sidebar</p>
+</div>
 
-<% @shops.each do |shop| %>
-  <tr>
-    <td><%= shop.name %></td>
-    <td><%= shop.datetime_of_visit %></td>
-    <td><%= shop.latitude %></td>
-    <td><%= shop.longitude %></td>
-    <td><%= shop.contact %></td>
-    <td><%= shop.project %></td>
-    <td><%= link_to 'Show', shop %></td>
-    <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-    <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Shop', new_shop_path %>
